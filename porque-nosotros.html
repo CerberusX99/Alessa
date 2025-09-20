@@ -273,6 +273,38 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
+        .clients-section {
+            background-color: var(--light-gray);
+        }
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+        .client-card {
+            background: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .client-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+        }
+        .client-placeholder {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--dark-blue);
+            text-align: center;
+        }
+
         #visor-3d {
             background-color: var(--white-color);
         }
@@ -530,6 +562,45 @@
                 </div>
                 <div class="section-cta fade-in-element" style="transition-delay: 0.6s;">
                     <a href="servicios.html" class="btn btn-outline">Explorar nuestros servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section clients-section" id="clientes">
+            <div class="container">
+                <h2 class="fade-in-element">Clientes que confían en nosotros</h2>
+                <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Cada alianza es una prueba de nuestra capacidad para integrarnos con tus procesos y potenciar resultados.</p>
+                <div class="clients-grid">
+                    <a href="https://www.nexteer.com" class="client-card fade-in-element" style="transition-delay: 0.1s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Nexteer</span>
+                    </a>
+                    <a href="https://www.advaltech.com" class="client-card fade-in-element" style="transition-delay: 0.15s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Advaltech</span>
+                    </a>
+                    <a href="https://www.boellhoff.com" class="client-card fade-in-element" style="transition-delay: 0.2s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Böllhoff</span>
+                    </a>
+                    <a href="https://www.billforge.com" class="client-card fade-in-element" style="transition-delay: 0.25s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Bill Forge</span>
+                    </a>
+                    <a href="https://www.hirschvogel.com" class="client-card fade-in-element" style="transition-delay: 0.3s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Hirschvogel</span>
+                    </a>
+                    <a href="https://www.itech.com" class="client-card fade-in-element" style="transition-delay: 0.35s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">iTech</span>
+                    </a>
+                    <a href="https://www.methode.com" class="client-card fade-in-element" style="transition-delay: 0.4s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Methode Electronics</span>
+                    </a>
+                    <a href="https://www.teradai.com" class="client-card fade-in-element" style="transition-delay: 0.45s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Teradai</span>
+                    </a>
+                    <a href="https://www.valeo.com" class="client-card fade-in-element" style="transition-delay: 0.5s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Valeo</span>
+                    </a>
+                    <a href="https://www.plasticomnium.com" class="client-card fade-in-element" style="transition-delay: 0.55s;" target="_blank" rel="noopener">
+                        <span class="client-placeholder">Plastic Omnium</span>
+                    </a>
                 </div>
             </div>
         </section>
