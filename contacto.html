@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alessa Servicios Integrales e Ingenieria | Soluciones de Calidad</title>
-    
-    <!-- Importación de Google Fonts para un aspecto más moderno -->
+    <title>Contacto | Alessa Servicios Integrales e Ingeniería</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Todo el CSS está integrado en este archivo para mayor simplicidad -->
+
     <style>
         :root {
-            --primary-color: #0056b3; /* Azul corporativo principal */
-            --secondary-accent-color: #00A786; /* Verde azulado vibrante para acentos */
-            --dark-blue: #0d2c4b;    /* Azul muy oscuro para textos y fondos */
-            --light-gray: #f8f9fa;   /* Gris aún más claro para fondos */
+            --primary-color: #0056b3;
+            --secondary-accent-color: #00A786;
+            --dark-blue: #0d2c4b;
+            --light-gray: #f8f9fa;
             --text-color: #343a40;
             --white-color: #ffffff;
-            --border-radius: 12px; /* Bordes más redondeados */
+            --border-radius: 12px;
         }
 
-        /* --- Estilos Generales --- */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -54,7 +51,7 @@
             letter-spacing: 1px;
             position: relative;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
@@ -69,10 +66,9 @@
 
         section {
             padding: 100px 0;
-            overflow-x: hidden; /* Evita el desbordamiento horizontal por las animaciones */
+            overflow-x: hidden;
         }
 
-        /* --- Encabezado y Navegación --- */
         .header {
             background: transparent;
             padding: 20px 0;
@@ -106,13 +102,6 @@
             height: 40px;
             transition: height 0.3s ease-in-out;
         }
-        .header.scrolled .logo img {
-            /* Puedes cambiar el logo a una versión oscura si es necesario */
-            /* filter: invert(1); */
-        }
-        .header:not(.scrolled) .hamburger-menu .bar {
-            background-color: var(--white-color);
-        }
 
         .main-nav ul { margin: 0; padding: 0; list-style: none; }
         .main-nav ul li { display: inline-block; margin-left: 35px; }
@@ -129,14 +118,20 @@
         .header:not(.scrolled) .main-nav ul li a {
             color: var(--white-color);
         }
-        
+
         .main-nav ul li a:hover, .main-nav ul li a.active {
             color: var(--secondary-accent-color);
         }
-        
+
         .main-nav ul li a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
-            transform: translateX(-50%); background-color: var(--secondary-accent-color);
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-accent-color);
             transition: width 0.3s ease-in-out;
         }
         .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 100%; }
@@ -144,11 +139,19 @@
         .hamburger-menu { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
         .hamburger-menu .bar { width: 25px; height: 3px; background-color: var(--dark-blue); transition: all 0.3s ease-in-out; }
 
-        /* --- Sección Principal (Hero) --- */
         .hero {
-            background: linear-gradient(rgba(13, 44, 75, 0.7), rgba(13, 44, 75, 0.7)), url('img/quality.jpg') no-repeat center center/cover;
-            height: 100vh; color: var(--white-color); display: flex; justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(rgba(13, 44, 75, 0.75), rgba(13, 44, 75, 0.75)), url('img/quality.jpg') no-repeat center center/cover;
+            height: 70vh;
+            color: var(--white-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             position: relative;
+        }
+        .inner-hero {
+            height: 70vh;
+            min-height: 420px;
         }
         .hero-content { max-width: 850px; }
         .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; color: var(--white-color); font-weight: 900; }
@@ -189,35 +192,7 @@
             text-align: center;
             margin-top: 50px;
         }
-        
-        /* --- Flecha de Scroll --- */
-        .scroll-down-arrow {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 24px;
-            border-left: 3px solid var(--white-color);
-            border-bottom: 3px solid var(--white-color);
-            transform: translateX(-50%) rotate(-45deg);
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) rotate(-45deg) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) rotate(-45deg) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) rotate(-45deg) translateY(-5px);
-            }
-        }
 
-
-        /* --- Sección de Servicios --- */
         #servicios { background: var(--light-gray); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
@@ -227,15 +202,22 @@
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative; overflow: hidden;
         }
-        
+
         .service-item::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
             background: conic-gradient(transparent, var(--secondary-accent-color), transparent 30%);
-            transform-origin: center; animation: rotate 6s linear infinite;
-            opacity: 0; transition: opacity 0.4s;
+            transform-origin: center;
+            animation: rotate 6s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s;
         }
         .service-item:hover::before { opacity: 1; }
-        
+
         .service-item:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 20px 40px rgba(0,0,0,0.12);
@@ -246,7 +228,7 @@
             padding: 20px; margin: 2px; border-radius: calc(var(--border-radius) - 2px);
             height: 100%; box-sizing: border-box;
         }
-        
+
         .service-item .icon {
             margin-bottom: 20px;
             height: 64px;
@@ -259,10 +241,9 @@
         .service-item:hover .icon svg {
             transform: scale(1.1);
         }
-        
+
         .service-item h3 { font-size: 1.6em; margin-bottom: 15px; }
 
-        /* --- Nueva Sección: Por Qué Elegirnos --- */
         #porque-nosotros {
             background: linear-gradient(rgba(13, 44, 75, 0.85), rgba(13, 44, 75, 0.85)), url('https://placehold.co/1920x1080/6c757d/ffffff?text=Fondo+Industrial') no-repeat center center/cover;
             background-attachment: fixed;
@@ -292,7 +273,6 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
-        /* --- Sección Visor 3D --- */
         #visor-3d {
             background-color: var(--white-color);
         }
@@ -304,32 +284,29 @@
             border-radius: var(--border-radius);
         }
 
-        /* --- Sección Sobre Nosotros --- */
         #nosotros {
             background-color: var(--light-gray);
         }
-        .about-content { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 50px; 
-            align-items: center; 
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
         }
-        /* MODIFICADO: Estilos para el contenedor de la imagen para efecto Parallax */
         .about-image {
             overflow: hidden;
             border-radius: var(--border-radius);
         }
-        .about-content img { 
-            width: 100%; 
+        .about-content img {
+            width: 100%;
             display: block;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .about-text h3 { 
-            font-size: 2.2rem; 
-            margin-bottom: 20px; 
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
         }
 
-        /* --- Sección de Contacto --- */
         #contacto { background-color: var(--white-color); }
         .summary-grid {
             display: grid;
@@ -376,24 +353,21 @@
             text-decoration: underline;
         }
 
-        /* --- Pie de Página --- */
         .footer { background: var(--dark-blue); color: var(--white-color); text-align: center; padding: 40px 0; }
         .footer p { margin: 0; opacity: 0.8; }
 
-        /* --- Estilos para Animaciones --- */
         .fade-in-element {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .fade-in-element.is-visible { 
-            opacity: 1; 
-            transform: translateY(0); 
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        /* --- Estilos Responsivos --- */
+
         @media (max-width: 768px) {
-            #nosotros, #porque-nosotros { background-attachment: scroll; } /* Desactiva parallax en móvil para mejor rendimiento */
+            #nosotros, #porque-nosotros { background-attachment: scroll; }
             .header:not(.scrolled) .logo, .header:not(.scrolled) .main-nav ul li a {
                 color: var(--dark-blue);
             }
@@ -415,28 +389,70 @@
             .hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
         }
 
-        /* Animación para el borde de las tarjetas de servicio */
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
+        .page-section { padding: 100px 0; }
+        .page-section.light-bg { background-color: var(--light-gray); }
+        .contact-form {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-group textarea { resize: vertical; min-height: 150px; }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 167, 134, 0.2);
+        }
+        .map-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
     </style>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
-    <!-- ======== Encabezado Fijo ======== -->
     <header class="header">
         <div class="container">
-            <a href="#inicio" class="logo"><img src="img/logoA.png" alt="Logo de Alessa"></a>
+            <a href="index.html#inicio" class="logo"><img src="img/logoA.png" alt="Logo de Alessa"></a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="servicios.html" class="nav-link">Servicios</a></li>
                     <li><a href="porque-nosotros.html" class="nav-link">Por Qué Nosotros</a></li>
-                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="index.html#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
                 </ul>
             </nav>
             <div class="hamburger-menu">
@@ -447,150 +463,113 @@
         </div>
     </header>
 
-    <!-- ======== Sección Principal de Bienvenida ======== -->
-    <section class="hero" id="inicio">
+    <section class="hero inner-hero" id="inicio">
         <div class="hero-content">
-            <h1 class="fade-in-element">Garantizando la Excelencia en Cada Componente</h1>
-            <p class="fade-in-element" style="transition-delay: 0.2s;">Soluciones integrales de inspección, sorteo y retrabajo para la industria. Su socio estratégico en control de calidad.</p>
-            <a href="contacto.html" class="btn fade-in-element" style="transition-delay: 0.4s;">Solicitar Cotización</a>
+            <h1 class="fade-in-element">Hablemos sobre tu próximo proyecto</h1>
+            <p class="fade-in-element" style="transition-delay: 0.2s;">Coordinamos inspecciones, retrabajos y representación en sitio con rapidez y transparencia.</p>
+            <a href="#formulario" class="btn fade-in-element" style="transition-delay: 0.4s;">Enviar solicitud</a>
         </div>
-        <div class="scroll-down-arrow"></div>
     </section>
 
     <main>
-        <!-- ======== Sección de Servicios Detallados ======== -->
-        <section id="servicios">
+        <section class="page-section light-bg" id="detalles">
             <div class="container">
-                <h2 class="fade-in-element">Nuestros Servicios</h2>
-                <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Un vistazo rápido a las soluciones que brindamos para proteger tu producción. Explora nuestros servicios más solicitados y descubre cómo podemos adaptarnos a tus necesidades.</p>
-                <div class="services-grid">
-                    <div class="service-item fade-in-element">
-                        <div class="service-content">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            </div>
-                            <h3>Inspección y Sorteo</h3>
-                            <p>Inspección visual y dimensional precisa para detectar desviaciones antes de que impacten en tus clientes.</p>
-                        </div>
-                    </div>
-                    <div class="service-item fade-in-element" style="transition-delay: 0.2s;">
-                        <div class="service-content">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                            </div>
-                            <h3>Retrabajos y Ensambles</h3>
-                            <p>Recuperamos material no conforme y rearmamos componentes críticos sin detener tu operación.</p>
-                        </div>
-                    </div>
-                    <div class="service-item fade-in-element" style="transition-delay: 0.4s;">
-                        <div class="service-content">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                            </div>
-                            <h3>Representación (GP-12)</h3>
-                            <p>Actuamos como tu equipo de calidad en sitio, gestionando contenciones y reportes GP-12 en tiempo real.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-cta fade-in-element" style="transition-delay: 0.6s;">
-                    <a href="servicios.html" class="btn btn-outline">Ver todos los servicios</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======== Sección Por Qué Elegirnos con Contadores ======== -->
-        <section id="porque-nosotros">
-            <div class="container">
-                <h2 class="fade-in-element">¿Por Qué Elegirnos?</h2>
-                <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Somos el equipo que responde cuando la calidad es innegociable. Estos indicadores resumen nuestro compromiso con la eficiencia, la trazabilidad y el acompañamiento continuo.</p>
-                <div class="stats-grid">
-                    <div class="stat-item fade-in-element" style="transition-delay: 0.1s;">
-                        <div class="icon">🏆</div>
-                        <div class="stat-number" data-target="99">0</div>
-                        <div class="stat-label">% de Clientes Satisfechos</div>
-                    </div>
-                    <div class="stat-item fade-in-element" style="transition-delay: 0.3s;">
-                        <div class="icon">⏱️</div>
-                        <div class="stat-number" data-target="24">0</div>
-                        <div class="stat-label">Horas de Respuesta Rápida</div>
-                    </div>
-                    <div class="stat-item fade-in-element" style="transition-delay: 0.5s;">
-                        <div class="icon">📈</div>
-                        <div class="stat-number" data-target="500">0</div>
-                        <div class="stat-label">+ Proyectos Completados</div>
-                    </div>
-                </div>
-                <div class="section-cta fade-in-element" style="transition-delay: 0.7s;">
-                    <a href="porque-nosotros.html" class="btn btn-outline">Ver más razones</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======== Visor 3D Interactivo ======== -->
-        <section id="visor-3d">
-            <div class="container">
-                <h2 class="fade-in-element">Visor 3D Interactivo</h2>
-
-                <model-viewer class="fade-in-element" src="img/alessa.glb" alt="Modelo 3D" camera-controls auto-rotate></model-viewer
-            </div>
-        </section>
-
-        <!-- ======== Sección Sobre Nosotros ======== -->
-        <section id="nosotros">
-            <div class="container">
-                <h2 class="fade-in-element">Comprometidos con la Excelencia</h2>
-                <div class="about-content">
-                    <div class="about-image fade-in-element">
-                        <img src="img/quality.jpg" alt="Equipo de Alessa Servicios trabajando en inspección" class="parallax-image">
-                    </div>
-                    <div class="about-text fade-in-element" style="transition-delay: 0.2s;">
-                        <h3>Su Aliado Estratégico en la Cadena de Suministro</h3>
-                        <p><strong>Alessa Servicios Integrales e Ingenieria</strong> es una empresa dedicada a proporcionar soluciones de control de calidad confiables y eficientes para la industria. Nuestro equipo de expertos está comprometido con la excelencia y la satisfacción total de nuestros clientes.</p>
-                        <p>Con años de experiencia en el sector, entendemos la importancia crítica de mantener una cadena de suministro libre de defectos. Nuestra misión es ser su aliado, protegiendo su producción y su reputación a través de un servicio impecable y una respuesta inmediata.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======== Sección de Formulario de Contacto ======== -->
-        <section id="contacto">
-            <div class="container">
-                <h2 class="fade-in-element">Póngase en Contacto</h2>
+                <h2 class="fade-in-element">Canales de contacto</h2>
+                <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Selecciona el canal que prefieras y un coordinador especializado se pondrá en contacto contigo.</p>
                 <div class="summary-grid">
-                    <div class="summary-card fade-in-element" style="transition-delay: 0.1s;">
-                        <h3>Estamos a un mensaje de distancia</h3>
-                        <p>Cuéntenos qué necesita y prepararemos una respuesta ágil con la solución adecuada para su planta. Nuestro equipo coordina visitas, arranques en sitio y seguimiento diario.</p>
-                        <p>Preferimos la comunicación directa para atender urgencias y garantizar la continuidad de su operación.</p>
-                    </div>
-                    <div class="summary-card fade-in-element" style="transition-delay: 0.3s;">
-                        <h3>Datos de contacto inmediato</h3>
+                    <div class="summary-card fade-in-element">
+                        <h3>Atención inmediata</h3>
                         <ul class="contact-details">
-                            <li>Teléfono directo<span><a href="tel:+523311223344">+52 33 1122 3344</a></span></li>
-                            <li>Correo electrónico<span><a href="mailto:contacto@alessaingenieria.com">contacto@alessaingenieria.com</a></span></li>
-                            <li>Horario de atención<span>Lunes a sábado de 7:00 a 20:00 hrs</span></li>
+                            <li>Teléfono<span><a href="tel:+523311223344">+52 33 1122 3344</a></span></li>
+                            <li>Whatsapp<span><a href="https://wa.me/523311223344" target="_blank" rel="noopener">+52 33 1122 3344</a></span></li>
+                            <li>Horario<span>Lunes a sábado de 7:00 a 20:00 hrs</span></li>
                         </ul>
                     </div>
-                    <div class="summary-card fade-in-element" style="transition-delay: 0.5s;">
+                    <div class="summary-card fade-in-element" style="transition-delay: 0.1s;">
+                        <h3>Correo electrónico</h3>
+                        <p>Comparte planos, especificaciones o documentación para recibir una propuesta detallada.</p>
+                        <ul class="contact-details">
+                            <li>Ventas<span><a href="mailto:ventas@alessaingenieria.com">ventas@alessaingenieria.com</a></span></li>
+                            <li>Atención general<span><a href="mailto:contacto@alessaingenieria.com">contacto@alessaingenieria.com</a></span></li>
+                        </ul>
+                    </div>
+                    <div class="summary-card fade-in-element" style="transition-delay: 0.2s;">
                         <h3>Cobertura</h3>
-                        <p>Disponemos de cuadrillas en todo el Bajío y occidente de México, con coordinación remota para proyectos nacionales.</p>
-                        <p>En situaciones críticas activamos equipos en menos de 24 horas.</p>
+                        <p>Equipos en el Bajío, occidente y norte de México. Coordinamos desplazamientos a cualquier parte del país.</p>
+                        <p>Solicita disponibilidad para activaciones en menos de 24 horas.</p>
                     </div>
                 </div>
-                <div class="section-cta fade-in-element" style="transition-delay: 0.7s;">
-                    <a href="contacto.html" class="btn btn-outline">Ver más opciones de contacto</a>
+            </div>
+        </section>
+
+        <section class="page-section" id="formulario">
+            <div class="container">
+                <h2 class="fade-in-element">Envíanos un mensaje</h2>
+                <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Cuéntanos sobre tu situación y prepararemos un plan de acción con tiempos y recursos sugeridos.</p>
+                <form action="https://formspree.io/f/TU_CODIGO_UNICO" method="POST" class="contact-form fade-in-element" style="transition-delay: 0.2s;">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" placeholder="Ej. Ana Martínez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company" placeholder="Nombre de la empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="correo@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Ej. +52 33 1122 3344">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Servicio de interés</label>
+                        <select id="service" name="service">
+                            <option value="inspeccion">Inspección y sorteo</option>
+                            <option value="retrabajos">Retrabajos y ensambles</option>
+                            <option value="representacion">Representación (GP-12)</option>
+                            <option value="documentacion">Documentación y reporteo</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Detalles del proyecto</label>
+                        <textarea id="message" name="message" placeholder="Describe tu necesidad, volumen aproximado y tiempos deseados" required></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Enviar mensaje</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="page-section light-bg" id="visita">
+            <div class="container">
+                <h2 class="fade-in-element">Visita o agenda una llamada</h2>
+                <div class="summary-grid">
+                    <div class="summary-card fade-in-element">
+                        <h3>Oficina operativa</h3>
+                        <p>Av. Industria 245, Parque Industrial Guadalajara, Jalisco, México.</p>
+                        <p>Recibimos visitas con previa cita para coordinar demostraciones y entrevistas de personal.</p>
+                        <div class="section-cta" style="margin-top: 20px;">
+                            <a href="mailto:contacto@alessaingenieria.com" class="btn btn-outline">Agendar cita</a>
+                        </div>
+                    </div>
+                    <div class="summary-card fade-in-element" style="transition-delay: 0.1s;">
+                        <img src="https://placehold.co/800x400?text=Ubicacion+Alessa" alt="Ubicación de Alessa" class="map-image">
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ======== Pie de Página ======== -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Alessa Servicios Integrales e Ingenieria. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Alessa Servicios Integrales e Ingeniería. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- JavaScript para la funcionalidad dinámica -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.header');
@@ -601,28 +580,23 @@
             const trackedSections = anchorLinks
                 .map(link => document.querySelector(link.getAttribute('href')))
                 .filter(section => section !== null);
-            
-            // --- NUEVO: Elementos para Parallax ---
+
             const hero = document.querySelector('.hero');
             const parallaxImage = document.querySelector('.parallax-image');
 
-            // 1. Efecto del encabezado y Parallax al hacer scroll
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.pageYOffset;
-                
-                // Efecto de encabezado
+
                 if (scrollPosition > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
 
-                // Efecto Parallax para el Hero
                 if (hero) {
                     hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
                 }
 
-                // Efecto Parallax para la imagen de "Nosotros"
                 if (parallaxImage) {
                     const sectionTop = parallaxImage.closest('section').offsetTop;
                     const speed = -0.2;
@@ -631,7 +605,6 @@
                 }
             });
 
-            // 2. Funcionalidad del menú hamburguesa
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('mobile-active');
@@ -641,12 +614,10 @@
                 navMenu.classList.remove('mobile-active');
             }));
 
-            // 3. Animación de elementos al hacer scroll (bidireccional)
             const fadeInElements = document.querySelectorAll('.fade-in-element');
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    // MODIFICADO: Añade la clase si es visible, la quita si no lo es
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     } else {
@@ -656,7 +627,6 @@
             }, observerOptions);
             fadeInElements.forEach(el => { observer.observe(el); });
 
-            // 4. Resaltar enlace de navegación activo
             if (trackedSections.length) {
                 const updateActiveLink = () => {
                     let current = trackedSections[0].getAttribute('id');
@@ -681,18 +651,16 @@
                 updateActiveLink();
             }
 
-            // 5. Animación de contadores
             const counters = document.querySelectorAll('.stat-number');
-            const speed = 200; // a mayor número, más lento
+            const speed = 200;
 
             const countObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const counter = entry.target;
-                        // Evita que el contador se reinicie si ya ha contado
                         if(counter.innerText !== counter.getAttribute('data-target')) {
                             const target = +counter.getAttribute('data-target');
-                            
+
                             const updateCount = () => {
                                 const count = +counter.innerText;
                                 const increment = target / speed;
@@ -706,14 +674,12 @@
                             };
                             updateCount();
                         }
-                        observer.unobserve(counter); // Des-observa después de contar una vez
+                        observer.unobserve(counter);
                     }
                 });
             }, { threshold: 0.8 });
             counters.forEach(counter => { countObserver.observe(counter); });
         });
     </script>
-
 </body>
 </html>
-
