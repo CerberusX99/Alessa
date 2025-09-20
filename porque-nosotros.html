@@ -18,6 +18,8 @@
             --text-color: #343a40;
             --white-color: #ffffff;
             --border-radius: 12px;
+            --client-logo-max-width: 140px;
+            --client-logo-max-height: 72px;
         }
 
         body {
@@ -297,12 +299,29 @@
             transform: translateY(-6px);
             box-shadow: 0 18px 35px rgba(0,0,0,0.08);
         }
+
+        .client-logo {
+            width: 100%;
+            max-width: var(--client-logo-max-width);
+            max-height: var(--client-logo-max-height);
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.85;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+        .client-card:hover .client-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+=======
         .client-placeholder {
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--dark-blue);
             text-align: center;
+
         }
 
         #visor-3d {
@@ -571,6 +590,37 @@
                 <h2 class="fade-in-element">Clientes que confían en nosotros</h2>
                 <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Cada alianza es una prueba de nuestra capacidad para integrarnos con tus procesos y potenciar resultados.</p>
                 <div class="clients-grid">
+
+                    <a href="https://www.nexteer.com" class="client-card fade-in-element" style="transition-delay: 0.1s;" target="_blank" rel="noopener" aria-label="Nexteer" title="Nexteer">
+                        <img src="img/logos/nexteer.png" alt="Logo de Nexteer" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.advaltech.com" class="client-card fade-in-element" style="transition-delay: 0.15s;" target="_blank" rel="noopener" aria-label="Advaltech" title="Advaltech">
+                        <img src="img/logos/nexteer.png" alt="Logo de Advaltech" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.boellhoff.com" class="client-card fade-in-element" style="transition-delay: 0.2s;" target="_blank" rel="noopener" aria-label="Böllhoff" title="Böllhoff">
+                        <img src="img/logos/nexteer.png" alt="Logo de Böllhoff" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.billforge.com" class="client-card fade-in-element" style="transition-delay: 0.25s;" target="_blank" rel="noopener" aria-label="Bill Forge" title="Bill Forge">
+                        <img src="img/logos/nexteer.png" alt="Logo de Bill Forge" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.hirschvogel.com" class="client-card fade-in-element" style="transition-delay: 0.3s;" target="_blank" rel="noopener" aria-label="Hirschvogel" title="Hirschvogel">
+                        <img src="img/logos/nexteer.png" alt="Logo de Hirschvogel" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.itech.com" class="client-card fade-in-element" style="transition-delay: 0.35s;" target="_blank" rel="noopener" aria-label="iTech" title="iTech">
+                        <img src="img/logos/nexteer.png" alt="Logo de iTech" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.methode.com" class="client-card fade-in-element" style="transition-delay: 0.4s;" target="_blank" rel="noopener" aria-label="Methode Electronics" title="Methode Electronics">
+                        <img src="img/logos/nexteer.png" alt="Logo de Methode Electronics" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.teradai.com" class="client-card fade-in-element" style="transition-delay: 0.45s;" target="_blank" rel="noopener" aria-label="Teradai" title="Teradai">
+                        <img src="img/logos/nexteer.png" alt="Logo de Teradai" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.valeo.com" class="client-card fade-in-element" style="transition-delay: 0.5s;" target="_blank" rel="noopener" aria-label="Valeo" title="Valeo">
+                        <img src="img/logos/nexteer.png" alt="Logo de Valeo" class="client-logo" loading="lazy">
+                    </a>
+                    <a href="https://www.plasticomnium.com" class="client-card fade-in-element" style="transition-delay: 0.55s;" target="_blank" rel="noopener" aria-label="Plastic Omnium" title="Plastic Omnium">
+                        <img src="img/logos/nexteer.png" alt="Logo de Plastic Omnium" class="client-logo" loading="lazy">
+=======
                     <a href="https://www.nexteer.com" class="client-card fade-in-element" style="transition-delay: 0.1s;" target="_blank" rel="noopener">
                         <img src="img/logos/nexteer.png" alt="Logo de Nexteer"  class="client-logo" loading="lazy">
                     </a>
@@ -600,6 +650,7 @@
                     </a>
                     <a href="https://www.plasticomnium.com" class="client-card fade-in-element" style="transition-delay: 0.55s;" target="_blank" rel="noopener">
                         <span class="client-placeholder">Plastic Omnium</span>
+
                     </a>
                 </div>
             </div>
