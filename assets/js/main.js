@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const anchorLinks = Array.from(navLinks).filter((link) => {
         const href = link.getAttribute('href');
-        return Boolean(href) && href.startsWith('#');
+        return href && href.startsWith('#');
     });
 
     const trackedSections = anchorLinks
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.15,
+            threshold: 0.1,
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const increment = targetValue / speed;
 
                     if (current < targetValue) {
-                        counter.innerText = Math.ceil(current + increment);
-                        requestAnimationFrame(updateCount);
+                        counter.innerText = Math.ceil(current + increment).toString();
+                        setTimeout(updateCount, 10);
                     } else {
                         counter.innerText = targetValue.toString();
                     }
