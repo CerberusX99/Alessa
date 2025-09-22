@@ -191,7 +191,7 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 .hamburger-menu.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger-menu.active .bar:nth-child(2) {
@@ -199,7 +199,7 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 .hamburger-menu.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Hero */
@@ -319,7 +319,11 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 .services-grid {
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+#servicios {
+    background: var(--light-gray);
 }
 
 .service-item {
@@ -327,23 +331,25 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
     border-radius: var(--border-radius);
     border: 1px solid #e0e0e0;
     background: var(--white-color);
-    padding: 40px 32px;
+    padding: 40px;
     text-align: center;
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .service-item::before {
     content: '';
     position: absolute;
-    inset: -60% -60% auto auto;
-    width: 220%;
-    height: 220%;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
     background: conic-gradient(transparent, var(--secondary-accent-color), transparent 30%);
     transform-origin: center;
     animation: rotate 6s linear infinite;
     opacity: 0;
-    transition: opacity var(--transition-base);
+    transition: opacity 0.4s ease;
 }
 
 .service-item:hover::before {
@@ -351,7 +357,7 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 .service-item:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-10px) scale(1.03);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
@@ -359,7 +365,11 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
     position: relative;
     z-index: 2;
     background: var(--white-color);
-    padding: 0;
+    padding: 20px;
+    margin: 2px;
+    border-radius: calc(var(--border-radius) - 2px);
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .service-item .icon {
@@ -373,7 +383,7 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 .service-item .icon svg {
-    transition: transform var(--transition-base);
+    transition: transform 0.3s ease-in-out;
 }
 
 .service-item:hover .icon svg {
@@ -381,7 +391,7 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 .service-item h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 15px;
 }
 
@@ -768,13 +778,15 @@ model-viewer {
         position: fixed;
         top: 0;
         right: -100%;
-        width: min(320px, 70%);
+        width: 70%;
         height: 100vh;
         background: var(--white-color);
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        padding: 120px 32px 40px;
+        padding: 0;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         transition: right var(--transition-base);
     }
 
@@ -782,6 +794,7 @@ model-viewer {
         flex-direction: column;
         gap: 1.5rem;
         width: 100%;
+        text-align: center;
     }
 
     .main-nav.mobile-active {
@@ -790,6 +803,7 @@ model-viewer {
 
     .hamburger-menu {
         display: flex;
+        z-index: 1001;
     }
 
     .hero {
@@ -809,7 +823,8 @@ model-viewer {
         background-color: var(--dark-blue);
     }
 
-    #porque-nosotros {
+    #porque-nosotros,
+    #nosotros {
         background-attachment: scroll;
     }
 
