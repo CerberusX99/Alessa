@@ -1,6 +1,10 @@
 :root {
     --primary-color: #0056b3;
     --secondary-accent-color: #00a786;
+    --accent-magenta: #ff6f61;
+    --accent-gold: #f7b733;
+    --accent-sky: #4cc9f0;
+    --accent-lilac: #8e54e9;
     --dark-blue: #0d2c4b;
     --light-gray: #f8f9fa;
     --text-color: #343a40;
@@ -110,7 +114,7 @@ section {
 }
 
 .logo img {
-    height: 42px;
+    height: 55px;
     transition: transform var(--transition-base);
 }
 
@@ -323,7 +327,7 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 #servicios {
-    background: var(--light-gray);
+    background: linear-gradient(180deg, var(--light-gray) 0%, rgba(76, 201, 240, 0.1) 50%, rgba(247, 183, 51, 0.15) 100%);
 }
 
 .service-item {
@@ -438,6 +442,36 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
     text-align: center;
 }
 
+.stat-item {
+    position: relative;
+    padding: 32px 26px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.92;
+    background: linear-gradient(135deg, var(--secondary-accent-color), var(--accent-sky));
+    z-index: 0;
+}
+
+.stat-item:nth-child(2)::before {
+    background: linear-gradient(135deg, var(--accent-magenta), var(--accent-lilac));
+}
+
+.stat-item:nth-child(3)::before {
+    background: linear-gradient(135deg, var(--accent-gold), var(--primary-color));
+}
+
+.stat-item > * {
+    position: relative;
+    z-index: 1;
+}
+
 .stat-item .icon {
     font-size: 3rem;
     margin-bottom: 15px;
@@ -454,6 +488,21 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 .stat-label {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.85);
+}
+
+/* 3D viewer section */
+#visor-3d {
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.15), rgba(142, 84, 233, 0.2));
+}
+
+#visor-3d h2 {
+    color: var(--dark-blue);
+}
+
+model-viewer {
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.25), rgba(0, 167, 134, 0.25));
+    padding: 24px;
 }
 
 /* About */
@@ -505,6 +554,41 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
     border-radius: var(--border-radius);
     padding: 32px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.summary-card,
+.process-step,
+.milestone-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before,
+.process-step::before,
+.milestone-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--secondary-accent-color), var(--accent-sky));
+}
+
+.summary-card:nth-child(2)::before,
+.process-step:nth-child(2)::before,
+.milestone-card:nth-child(2)::before {
+    background: linear-gradient(90deg, var(--accent-magenta), var(--accent-lilac));
+}
+
+.summary-card:nth-child(3)::before,
+.process-step:nth-child(3)::before,
+.milestone-card:nth-child(3)::before {
+    background: linear-gradient(90deg, var(--accent-gold), var(--primary-color));
+}
+
+#contacto {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(0, 167, 134, 0.08) 50%, rgba(255, 111, 97, 0.08) 100%);
 }
 
 .summary-card h3 {
