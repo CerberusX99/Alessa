@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Por qué Alessa? | Servicios Integrales e Ingeniería</title>
+    <link rel="icon" type="image/png" href="img/logoA.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +21,11 @@
             --border-radius: 12px;
             --client-logo-max-width: 140px;
             --client-logo-max-height: 72px;
+            --accent-sunrise: #ffb703;
+            --accent-coral: #ff6b6b;
+            --accent-violet: #6c63ff;
+            --accent-cyan: #4cc9f0;
+            --accent-lime: #7bd88f;
         }
 
         body {
@@ -142,7 +148,7 @@
         .hamburger-menu .bar { width: 25px; height: 3px; background-color: var(--dark-blue); transition: all 0.3s ease-in-out; }
 
         .hero {
-            background: linear-gradient(rgba(13, 44, 75, 0.75), rgba(13, 44, 75, 0.75)), url('img/quality.jpg') no-repeat center center/cover;
+            background: linear-gradient(135deg, rgba(13, 44, 75, 0.82), rgba(108, 99, 255, 0.55), rgba(0, 167, 134, 0.65)), url('img/quality.jpg') no-repeat center center/cover;
             height: 70vh;
             color: var(--white-color);
             display: flex;
@@ -233,9 +239,27 @@
 
         .service-item .icon {
             margin-bottom: 20px;
-            height: 64px;
-            width: 64px;
-            display: inline-block;
+            height: 72px;
+            width: 72px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 22px;
+            color: var(--white-color);
+            background: linear-gradient(135deg, var(--secondary-accent-color), var(--primary-color));
+            box-shadow: 0 12px 24px rgba(0, 86, 179, 0.25);
+        }
+        .service-item:nth-child(3n + 1) .icon {
+            background: linear-gradient(135deg, var(--accent-sunrise), var(--secondary-accent-color));
+            box-shadow: 0 12px 24px rgba(255, 183, 3, 0.35);
+        }
+        .service-item:nth-child(3n + 2) .icon {
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-violet));
+            box-shadow: 0 12px 24px rgba(255, 107, 107, 0.35);
+        }
+        .service-item:nth-child(3n) .icon {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
+            box-shadow: 0 12px 24px rgba(76, 201, 240, 0.3);
         }
         .service-item .icon svg {
             transition: transform 0.3s ease-in-out;
@@ -264,7 +288,14 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px; text-align: center;
         }
-        .stat-item .icon { font-size: 3em; color: var(--secondary-accent-color); margin-bottom: 15px; }
+        .stat-item .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: transparent;
+            background: linear-gradient(135deg, var(--accent-coral), var(--accent-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
         .stat-item .stat-number {
             font-size: 3.5em; font-weight: 900;
             line-height: 1; margin-bottom: 10px;
@@ -294,6 +325,23 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .client-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 183, 3, 0.12), rgba(108, 99, 255, 0.12));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .client-card:hover::before {
+            opacity: 1;
+        }
+        .client-card > * {
+            position: relative;
+            z-index: 1;
         }
         .client-card:hover {
             transform: translateY(-6px);
@@ -371,6 +419,17 @@
             border-radius: var(--border-radius);
             padding: 35px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-sunrise), var(--accent-coral), var(--accent-violet), var(--accent-cyan));
         }
         .summary-card h3 {
             margin-top: 0;
@@ -496,7 +555,6 @@
                     <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="servicios.html" class="nav-link">Servicios</a></li>
                     <li><a href="porque-nosotros.html" class="nav-link active">Por Qué Nosotros</a></li>
-                    <li><a href="index.html#nosotros" class="nav-link">Nosotros</a></li>
                     <li><a href="contacto.html" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
