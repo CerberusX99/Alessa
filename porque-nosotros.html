@@ -439,6 +439,97 @@
         .summary-card p {
             margin-bottom: 20px;
         }
+
+        .quality-policy-section {
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.08), rgba(0, 167, 134, 0.08));
+        }
+        .quality-policy-card {
+            position: relative;
+            background: var(--white-color);
+            border-radius: calc(var(--border-radius) + 8px);
+            padding: 60px;
+            box-shadow: 0 25px 55px rgba(13, 44, 75, 0.12);
+            overflow: hidden;
+            border: 1px solid rgba(13, 44, 75, 0.08);
+        }
+        .quality-policy-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(0, 167, 134, 0.18), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(108, 99, 255, 0.16), transparent 50%);
+            z-index: 0;
+        }
+        .quality-policy-content {
+            position: relative;
+            z-index: 1;
+        }
+        .quality-policy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(0, 86, 179, 0.1);
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+        .quality-policy-badge span {
+            display: inline-flex;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-accent-color), var(--primary-color));
+        }
+        .quality-policy-card h3 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+        .quality-policy-card p {
+            font-size: 1.05rem;
+            color: rgba(13, 44, 75, 0.85);
+        }
+        .quality-pill-list {
+            margin: 35px 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .quality-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 12px 25px rgba(13, 44, 75, 0.08);
+            border: 1px solid rgba(13, 44, 75, 0.08);
+        }
+        .quality-pill-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-accent-color), var(--primary-color));
+            color: var(--white-color);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .quality-policy-note {
+            font-weight: 700;
+            color: var(--dark-blue);
+            font-size: 1.05rem;
+        }
         .contact-details {
             list-style: none;
             margin: 0;
@@ -641,6 +732,26 @@
                 </div>
                 <div class="section-cta fade-in-element" style="transition-delay: 0.6s;">
                     <a href="servicios.html" class="btn btn-outline">Explorar nuestros servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section quality-policy-section" id="politica-calidad">
+            <div class="container">
+                <div class="quality-policy-card fade-in-element">
+                    <div class="quality-policy-content">
+                        <div class="quality-policy-badge"><span></span>Política de calidad</div>
+                        <h3>Excelencia respaldada por ISO 9001:2015</h3>
+                        <p>En Alessa Servicios Integrales estamos comprometidos con la excelencia y actualmente nos encontramos en proceso de certificación bajo la norma ISO&nbsp;9001:2015, que respalda la mejora continua de nuestros procesos y garantiza la satisfacción de nuestros clientes.</p>
+                        <p>Nos enfocamos en superar las expectativas del cliente a través de:</p>
+                        <ul class="quality-pill-list">
+                            <li class="quality-pill"><span class="quality-pill-icon">★</span><span>Profesionalismo y experiencia del equipo</span></li>
+                            <li class="quality-pill"><span class="quality-pill-icon">⬆</span><span>Capacitación constante</span></li>
+                            <li class="quality-pill"><span class="quality-pill-icon">💡</span><span>Uso de herramientas digitales especializadas</span></li>
+                            <li class="quality-pill"><span class="quality-pill-icon">⚙️</span><span>Soluciones integrales y flexibles para cada necesidad</span></li>
+                        </ul>
+                        <p class="quality-policy-note">Nuestra prioridad es ofrecer servicio de calidad total y fomentar un vínculo perdurable en la satisfacción del cliente.</p>
+                    </div>
                 </div>
             </div>
         </section>
