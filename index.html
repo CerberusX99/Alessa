@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alessa Servicios Integrales e Ingeniería ofrece soluciones de inspección, sorteo y retrabajo con cobertura nacional. Descubre nuestros servicios especializados para asegurar la calidad de tu producción.">
+    <meta name="author" content="Alessa Servicios Integrales e Ingeniería">
+    <meta property="og:title" content="Alessa Servicios Integrales e Ingeniería | Soluciones de Calidad">
+    <meta property="og:description" content="Soluciones integrales de inspección, sorteo y retrabajo para la industria. Somos tu socio estratégico en control de calidad.">
+    <meta property="og:image" content="https://alessa-quality.com/img/logoA.png">
+    <meta property="og:url" content="https://alessa-quality.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alessa Servicios Integrales e Ingeniería">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alessa Servicios Integrales e Ingeniería | Soluciones de Calidad">
+    <meta name="twitter:description" content="Control de calidad, inspección y retrabajo para la industria automotriz y manufacturera.">
+    <meta name="twitter:image" content="https://alessa-quality.com/img/logoA.png">
+    <link rel="canonical" href="https://alessa-quality.com/">
     <title>Alessa Servicios Integrales e Ingenieria | Soluciones de Calidad</title>
     <link rel="icon" type="image/png" href="img/logoA.png">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Alessa Servicios Integrales e Ingeniería",
+            "url": "https://alessa-quality.com/",
+            "logo": "https://alessa-quality.com/img/logoA.png",
+            "sameAs": [
+                "https://www.facebook.com/people/Alessa-Servicios-Integrales/100063742184282/"
+            ]
+        }
+    </script>
     
     <!-- Importación de Google Fonts para un aspecto más moderno -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -468,12 +493,10 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                    <li><a href="porque-nosotros.html" class="nav-link">Por Qué Nosotros</a></li>
-
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#porque-nosotros" class="nav-link">Por Qué Nosotros</a></li>
                     <li><a href="vacantes.html" class="nav-link">Vacantes</a></li>
-
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
             <div class="hamburger-menu">
@@ -489,7 +512,7 @@
         <div class="hero-content">
             <h1 class="fade-in-element">Garantizando la Excelencia en Cada Componente</h1>
             <p class="fade-in-element" style="transition-delay: 0.2s;">Soluciones integrales de inspección, sorteo y retrabajo para la industria. Su socio estratégico en control de calidad.</p>
-            <a href="contacto.html" class="btn fade-in-element" style="transition-delay: 0.4s;">Solicitar Cotización</a>
+            <a href="#contacto" class="btn fade-in-element" style="transition-delay: 0.4s;">Solicitar Cotización</a>
         </div>
         <div class="scroll-down-arrow"></div>
     </section>
@@ -638,15 +661,43 @@
             const trackedSections = anchorLinks
                 .map(link => document.querySelector(link.getAttribute('href')))
                 .filter(section => section !== null);
-            
+
+            const updateUrlWithoutIndex = (hashValue = '') => {
+                const hasValue = hashValue && hashValue !== '#';
+                const hashFragment = hasValue ? (hashValue.startsWith('#') ? hashValue : `#${hashValue}`) : '';
+                const desiredSuffix = hashFragment ? `/${hashFragment}` : '/';
+                const currentSuffix = `${window.location.pathname.replace(/index\.html$/, '/')}${window.location.hash}` || '/';
+
+                if (currentSuffix !== desiredSuffix || window.location.pathname.endsWith('index.html')) {
+                    history.replaceState(null, '', `${window.location.origin}${desiredSuffix}`);
+                }
+            };
+
+            const scrollToSection = (targetId) => {
+                const section = document.getElementById(targetId);
+                if (!section) return;
+
+                const headerHeight = header.offsetHeight;
+                const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: sectionPosition,
+                    behavior: 'smooth'
+                });
+            };
+
+            if (window.location.pathname.endsWith('index.html')) {
+                updateUrlWithoutIndex(window.location.hash);
+            }
+
             // --- NUEVO: Elementos para Parallax ---
             const hero = document.querySelector('.hero');
             const parallaxImage = document.querySelector('.parallax-image');
 
             // 1. Efecto del encabezado y Parallax al hacer scroll
-            window.addEventListener('scroll', () => {
+            const handleScroll = () => {
                 const scrollPosition = window.pageYOffset;
-                
+
                 // Efecto de encabezado
                 if (scrollPosition > 50) {
                     header.classList.add('scrolled');
@@ -666,14 +717,25 @@
                     const yPos = (scrollPosition - sectionTop) * speed;
                     parallaxImage.style.transform = `translateY(${yPos}px)`;
                 }
-            });
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
 
             // 2. Funcionalidad del menú hamburguesa
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('mobile-active');
             });
-            navLinks.forEach(link => link.addEventListener('click', () => {
+            navLinks.forEach(link => link.addEventListener('click', (event) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    event.preventDefault();
+                    const targetId = href.substring(1);
+                    scrollToSection(targetId);
+                    updateUrlWithoutIndex(`#${targetId}`);
+                }
+
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('mobile-active');
             }));
@@ -712,6 +774,11 @@
                             link.classList.remove('active');
                         }
                     });
+
+                    const currentHash = `#${current}`;
+                    if (window.location.hash !== currentHash || window.location.pathname.endsWith('index.html')) {
+                        updateUrlWithoutIndex(currentHash);
+                    }
                 };
 
                 window.addEventListener('scroll', updateActiveLink);
