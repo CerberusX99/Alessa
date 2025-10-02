@@ -493,12 +493,10 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                    <li><a href="porque-nosotros.html" class="nav-link">Por Qué Nosotros</a></li>
-
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#porque-nosotros" class="nav-link">Por Qué Nosotros</a></li>
                     <li><a href="vacantes.html" class="nav-link">Vacantes</a></li>
-
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
             <div class="hamburger-menu">
@@ -514,7 +512,7 @@
         <div class="hero-content">
             <h1 class="fade-in-element">Garantizando la Excelencia en Cada Componente</h1>
             <p class="fade-in-element" style="transition-delay: 0.2s;">Soluciones integrales de inspección, sorteo y retrabajo para la industria. Su socio estratégico en control de calidad.</p>
-            <a href="contacto.html" class="btn fade-in-element" style="transition-delay: 0.4s;">Solicitar Cotización</a>
+            <a href="#contacto" class="btn fade-in-element" style="transition-delay: 0.4s;">Solicitar Cotización</a>
         </div>
         <div class="scroll-down-arrow"></div>
     </section>
@@ -697,9 +695,9 @@
             const parallaxImage = document.querySelector('.parallax-image');
 
             // 1. Efecto del encabezado y Parallax al hacer scroll
-            window.addEventListener('scroll', () => {
+            const handleScroll = () => {
                 const scrollPosition = window.pageYOffset;
-                
+
                 // Efecto de encabezado
                 if (scrollPosition > 50) {
                     header.classList.add('scrolled');
@@ -719,7 +717,10 @@
                     const yPos = (scrollPosition - sectionTop) * speed;
                     parallaxImage.style.transform = `translateY(${yPos}px)`;
                 }
-            });
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
 
             // 2. Funcionalidad del menú hamburguesa
             hamburger.addEventListener('click', () => {

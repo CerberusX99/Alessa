@@ -548,10 +548,10 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                    <li><a href="porque-nosotros.html" class="nav-link">Por Qué Nosotros</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="index.html#porque-nosotros" class="nav-link">Por Qué Nosotros</a></li>
                     <li><a href="vacantes.html" class="nav-link active">Vacantes</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
             <div class="hamburger-menu">
@@ -686,6 +686,7 @@
                 });
             };
 
+            const handleScroll = () => {
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.pageYOffset;
                 if (scrollPosition > 50) {
@@ -693,7 +694,10 @@
                 } else {
                     header.classList.remove('scrolled');
                 }
-            });
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
 
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
