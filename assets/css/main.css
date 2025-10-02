@@ -220,8 +220,8 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
 }
 
 .inner-hero {
-    min-height: clamp(420px, 70vh, 620px);
-    padding: clamp(150px, 18vh, 190px) 0 130px;
+    min-height: clamp(460px, 72vh, 660px);
+    padding: clamp(180px, 22vh, 220px) 0 140px;
 }
 
 .hero-content {
@@ -240,6 +240,10 @@ body.has-dark-hero .header:not(.scrolled) .hamburger-menu .bar {
     font-size: clamp(1.1rem, 3vw, 1.35rem);
     margin-bottom: 36px;
     opacity: 0.9;
+}
+
+.hero-careers {
+    background: linear-gradient(rgba(13, 44, 75, 0.78), rgba(13, 44, 75, 0.78)), url('../../img/quality2.jpeg') center/cover no-repeat;
 }
 
 .scroll-down-arrow {
@@ -703,6 +707,67 @@ model-viewer {
     max-width: 140px;
     max-height: 72px;
     object-fit: contain;
+}
+
+/* Jobs */
+.jobs-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.job-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px;
+    background: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 16px 40px rgba(13, 44, 75, 0.08);
+    position: relative;
+}
+
+.job-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.job-card__header h3 {
+    margin: 0;
+}
+
+.job-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(0, 167, 134, 0.15);
+    color: var(--secondary-accent-color);
+    letter-spacing: 0.5px;
+}
+
+.job-meta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+    color: var(--dark-blue);
+}
+
+.job-meta strong {
+    color: var(--secondary-accent-color);
+    font-weight: 700;
+}
+
+.job-card__cta {
+    margin-top: auto;
 }
 
 /* Contact */
