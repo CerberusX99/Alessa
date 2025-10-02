@@ -687,6 +687,7 @@
             };
 
             const handleScroll = () => {
+            window.addEventListener('scroll', () => {
                 const scrollPosition = window.pageYOffset;
                 if (scrollPosition > 50) {
                     header.classList.add('scrolled');
