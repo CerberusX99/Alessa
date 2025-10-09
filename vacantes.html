@@ -1,1119 +1,718 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Por qué Alessa? | Servicios Integrales e Ingeniería</title>
-    <link rel="icon" type="image/png" href="img/logoA.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary-color: #0056b3;
-            --secondary-accent-color: #00A786;
-            --dark-blue: #0d2c4b;
-            --light-gray: #f8f9fa;
-            --text-color: #343a40;
-            --white-color: #ffffff;
-            --border-radius: 12px;
-            --client-logo-max-width: 140px;
-            --client-logo-max-height: 72px;
-            --accent-sunrise: #ffb703;
-            --accent-coral: #ff6b6b;
-            --accent-violet: #6c63ff;
-            --accent-cyan: #4cc9f0;
-            --accent-lime: #7bd88f;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--white-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3 {
-            color: var(--dark-blue);
-            font-weight: 700;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary-accent-color);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        section {
-            padding: 100px 0;
-            overflow-x: hidden;
-        }
-
-        .header {
-            background: transparent;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out;
-        }
-
-        .header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            height: 85px;
-            transition: height 0.3s ease-in-out;
-        }
-
-        .main-nav ul { margin: 0; padding: 0; list-style: none; }
-        .main-nav ul li { display: inline-block; margin-left: 35px; }
-        .main-nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: 700;
-            padding-bottom: 5px;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .header:not(.scrolled) .main-nav ul li a {
-            color: var(--white-color);
-        }
-
-        .main-nav ul li a:hover, .main-nav ul li a.active {
-            color: var(--secondary-accent-color);
-        }
-
-        .main-nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--secondary-accent-color);
-            transition: width 0.3s ease-in-out;
-        }
-        .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 100%; }
-
-        .hamburger-menu { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger-menu .bar { width: 25px; height: 3px; background-color: var(--dark-blue); transition: all 0.3s ease-in-out; }
-
-        .hero {
-            background: linear-gradient(135deg, rgba(13, 44, 75, 0.82), rgba(108, 99, 255, 0.55), rgba(0, 167, 134, 0.65)), url('img/quality5.jpeg') no-repeat center center/cover;
-            height: 70vh;
-            color: var(--white-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-        .inner-hero {
-            height: 70vh;
-            min-height: 420px;
-        }
-        .hero-content { max-width: 850px; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; color: var(--white-color); font-weight: 900; }
-        .hero p { font-size: clamp(1.1rem, 3vw, 1.4rem); margin-bottom: 40px; opacity: 0.9; }
-        .vacancies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .vacancy-card {
-            position: relative;
-            background: var(--white-color);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            border: 1px solid rgba(13, 44, 75, 0.08);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
-            overflow: hidden;
-        }
-
-        .vacancy-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(76, 201, 240, 0.12), rgba(123, 216, 143, 0.12));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .vacancy-card:hover::before {
-            opacity: 1;
-        }
-
-        .vacancy-card h3 {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .vacancy-card p {
-            color: #4f5d75;
-        }
-
-        .vacancy-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            background: rgba(255, 183, 3, 0.18);
-            color: var(--accent-sunrise);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        .vacancy-meta {
-            list-style: none;
-            margin: 18px 0 0;
-            padding: 0;
-            display: grid;
-            gap: 8px;
-            color: #4f5d75;
-            font-size: 0.95rem;
-        }
-
-        .vacancy-meta li::before {
-            content: '\2022';
-            color: var(--secondary-accent-color);
-            font-weight: 900;
-            display: inline-block;
-            width: 1em;
-        }
-
-        .skills-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .skills-chips span {
-            background: rgba(108, 99, 255, 0.12);
-            color: var(--accent-violet);
-            padding: 8px 16px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .map-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            align-items: center;
-        }
-
-        .map-card {
-            background: var(--white-color);
-            border-radius: var(--border-radius);
-            padding: 24px;
-            border: 1px solid rgba(13, 44, 75, 0.08);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
-        }
-
-        #vacantes-map {
-            height: 420px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .map-card h3 {
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .map-card p {
-            color: #4f5d75;
-        }
-
-        .map-legend {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(0, 167, 134, 0.08);
-            border-radius: var(--border-radius);
-            padding: 12px 16px;
-        }
-
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-        }
-
-        .legend-color.qro {
-            background: var(--secondary-accent-color);
-        }
-
-        .legend-color.marques {
-            background: var(--accent-coral);
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .process-step {
-            background: var(--white-color);
-            border-radius: var(--border-radius);
-            padding: 35px;
-            border: 1px solid rgba(13, 44, 75, 0.08);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-accent-color), var(--accent-lime));
-            color: var(--white-color);
-            font-weight: 800;
-            font-size: 1.3rem;
-        }
-
-        .footer {
-            background: var(--dark-blue);
-            color: rgba(255,255,255,0.8);
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 80px;
-        }
-
-        .fade-in-element {
-            opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 992px) {
-            .hero {
-                height: auto;
-                padding: 160px 0 120px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header .container {
-                padding: 0 20px;
-            }
-
-            .hamburger-menu {
-                display: flex;
-            }
-
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 260px;
-                background-color: rgba(255, 255, 255, 0.97);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                padding-top: 120px;
-                transition: right 0.3s ease-in-out;
-                box-shadow: -4px 0 18px rgba(0,0,0,0.08);
-            }
-
-            .main-nav ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 25px;
-            }
-
-            .main-nav ul li {
-                margin-left: 0;
-            }
-
-            .main-nav.mobile-active {
-                right: 0;
-            }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--secondary-accent-color), var(--primary-color));
-            color: var(--white-color); padding: 18px 40px; text-decoration: none;
-            border-radius: 50px; font-size: 1.1em; font-weight: 700;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
-            border: none; cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0, 167, 134, 0.3);
-        }
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 167, 134, 0.4);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            box-shadow: none;
-        }
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white-color);
-            box-shadow: 0 10px 20px rgba(0, 86, 179, 0.25);
-        }
-        .section-intro {
-            max-width: 720px;
-            margin: 0 auto 40px;
-            text-align: center;
-            font-size: 1.05rem;
-            color: var(--text-color);
-        }
-        .section-cta {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        #servicios { background: var(--light-gray); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-        .service-item {
-            background: var(--white-color); padding: 40px; border-radius: var(--border-radius);
-            text-align: center; border: 1px solid #e0e0e0;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative; overflow: hidden;
-        }
-
-        .service-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, var(--secondary-accent-color), transparent 30%);
-            transform-origin: center;
-            animation: rotate 6s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .service-item:hover::before { opacity: 1; }
-
-        .service-item:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        .service-item .service-content {
-            position: relative; z-index: 2; background: var(--white-color);
-            padding: 20px; margin: 2px; border-radius: calc(var(--border-radius) - 2px);
-            height: 100%; box-sizing: border-box;
-        }
-
-        .service-item .icon {
-            margin-bottom: 20px;
-            height: 72px;
-            width: 72px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 22px;
-            color: var(--white-color);
-            background: linear-gradient(135deg, var(--secondary-accent-color), var(--primary-color));
-            box-shadow: 0 12px 24px rgba(0, 86, 179, 0.25);
-        }
-        .service-item:nth-child(3n + 1) .icon {
-            background: linear-gradient(135deg, var(--accent-sunrise), var(--secondary-accent-color));
-            box-shadow: 0 12px 24px rgba(255, 183, 3, 0.35);
-        }
-        .service-item:nth-child(3n + 2) .icon {
-            background: linear-gradient(135deg, var(--accent-coral), var(--accent-violet));
-            box-shadow: 0 12px 24px rgba(255, 107, 107, 0.35);
-        }
-        .service-item:nth-child(3n) .icon {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
-            box-shadow: 0 12px 24px rgba(76, 201, 240, 0.3);
-        }
-        .service-item .icon svg {
-            transition: transform 0.3s ease-in-out;
-        }
-        .service-item:hover .icon svg {
-            transform: scale(1.1);
-        }
-
-        .service-item h3 { font-size: 1.6em; margin-bottom: 15px; }
-
-        #porque-nosotros {
-            background: linear-gradient(rgba(13, 44, 75, 0.85), rgba(13, 44, 75, 0.85)), url('https://placehold.co/1920x1080/6c757d/ffffff?text=Fondo+Industrial') no-repeat center center/cover;
-            background-attachment: fixed;
-        }
-        #porque-nosotros h2 {
-            color: var(--white-color);
-        }
-        #porque-nosotros h2::after {
-            background-color: var(--white-color);
-        }
-        #porque-nosotros .section-intro {
-            color: rgba(255, 255, 255, 0.85);
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px; text-align: center;
-        }
-        .stat-item .icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            color: transparent;
-            background: linear-gradient(135deg, var(--accent-coral), var(--accent-cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        .stat-item .stat-number {
-            font-size: 3.5em; font-weight: 900;
-            line-height: 1; margin-bottom: 10px;
-            color: var(--white-color);
-        }
-        .stat-item .stat-label {
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .clients-section {
-            background-color: var(--light-gray);
-        }
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 30px;
-            align-items: stretch;
-        }
-        .client-card {
-            background: var(--white-color);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-        .client-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 183, 3, 0.12), rgba(108, 99, 255, 0.12));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .client-card:hover::before {
-            opacity: 1;
-        }
-        .client-card > * {
-            position: relative;
-            z-index: 1;
-        }
-        .client-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 35px rgba(0,0,0,0.08);
-        }
-
-        .client-logo {
-            width: 100%;
-            max-width: var(--client-logo-max-width);
-            max-height: var(--client-logo-max-height);
-            height: auto;
-            margin: 0 auto;
-            object-fit: contain;
-            filter: grayscale(100%);
-            opacity: 0.85;
-            transition: filter 0.3s ease, opacity 0.3s ease;
-        }
-        .client-card:hover .client-logo {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-        .client-placeholder {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--dark-blue);
-            text-align: center;
-
-        }
-
-        #visor-3d {
-            background-color: var(--white-color);
-        }
-
-        model-viewer {
-            width: 100%;
-            height: 500px;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-        }
-
-        #nosotros {
-            background-color: var(--light-gray);
-        }
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            align-items: center;
-        }
-        .about-image {
-            overflow: hidden;
-            border-radius: var(--border-radius);
-        }
-        .about-content img {
-            width: 100%;
-            display: block;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .about-text h3 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-
-        #contacto { background-color: var(--white-color); }
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            align-items: stretch;
-        }
-        .summary-card {
-            background: var(--white-color);
-            border: 1px solid #e0e0e0;
-            border-radius: var(--border-radius);
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        .summary-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--accent-sunrise), var(--accent-coral), var(--accent-violet), var(--accent-cyan));
-        }
-        .summary-card h3 {
-            margin-top: 0;
-            font-size: 1.7rem;
-            margin-bottom: 20px;
-        }
-        .summary-card p {
-            margin-bottom: 20px;
-        }
-
-        .quality-policy-section {
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.08), rgba(0, 167, 134, 0.08));
-        }
-        .quality-policy-card {
-            position: relative;
-            background: var(--white-color);
-            border-radius: calc(var(--border-radius) + 8px);
-            padding: 60px;
-            box-shadow: 0 25px 55px rgba(13, 44, 75, 0.12);
-            overflow: hidden;
-            border: 1px solid rgba(13, 44, 75, 0.08);
-        }
-        .quality-policy-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(0, 167, 134, 0.18), transparent 55%),
-                        radial-gradient(circle at bottom right, rgba(108, 99, 255, 0.16), transparent 50%);
-            z-index: 0;
-        }
-        .quality-policy-content {
-            position: relative;
-            z-index: 1;
-        }
-        .quality-policy-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 18px;
-            border-radius: 999px;
-            background: rgba(0, 86, 179, 0.1);
-            color: var(--primary-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-        }
-        .quality-policy-badge span {
-            display: inline-flex;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-accent-color), var(--primary-color));
-        }
-        .quality-policy-card h3 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--dark-blue);
-        }
-        .quality-policy-card p {
-            font-size: 1.05rem;
-            color: rgba(13, 44, 75, 0.85);
-        }
-        .quality-pill-list {
-            margin: 35px 0;
-            padding: 0;
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-        }
-        .quality-pill {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 12px 25px rgba(13, 44, 75, 0.08);
-            border: 1px solid rgba(13, 44, 75, 0.08);
-        }
-        .quality-pill-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-accent-color), var(--primary-color));
-            color: var(--white-color);
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        .quality-policy-note {
-            font-weight: 700;
-            color: var(--dark-blue);
-            font-size: 1.05rem;
-        }
-        .contact-details {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .contact-details li {
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .contact-details span {
-            font-weight: 400;
-            display: block;
-            margin-top: 5px;
-            color: var(--text-color);
-        }
-        .contact-details a {
-            color: var(--secondary-accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .contact-details a:hover {
-            text-decoration: underline;
-        }
-
-        .footer { background: var(--dark-blue); color: var(--white-color); text-align: center; padding: 40px 0; }
-        .footer p { margin: 0; opacity: 0.8; }
-
-        .fade-in-element {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .fade-in-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            #nosotros, #porque-nosotros { background-attachment: scroll; }
-            .header:not(.scrolled) .logo, .header:not(.scrolled) .main-nav ul li a {
-                color: var(--dark-blue);
-            }
-            .header:not(.scrolled) .hamburger-menu .bar {
-                 background-color: var(--dark-blue);
-            }
-            .main-nav {
-                position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
-                background: var(--white-color); box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.4s ease-in-out; display: flex; flex-direction: column;
-                justify-content: center; align-items: center;
-            }
-            .main-nav.mobile-active { right: 0; }
-            .main-nav ul { flex-direction: column; text-align: center; }
-            .main-nav ul li { display: block; margin: 20px 0; }
-            .hamburger-menu { display: flex; z-index: 1001; }
-            .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-            .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
-            .hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .page-section { padding: 100px 0; }
-        .page-section.light-bg { background-color: var(--light-gray); }
-        .value-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .value-list li {
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .value-list li::before {
-            content: '\2713';
-            color: var(--secondary-accent-color);
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .milestone-card {
-            background: var(--white-color);
-            border-radius: var(--border-radius);
-            padding: 35px;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-        .milestone-card h3 {
-            margin-top: 0;
-        }
-        .testimonial-quote {
-            font-style: italic;
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-            color: var(--dark-blue);
-        }
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--secondary-accent-color);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vacantes | Alessa Servicios Integrales e Ingeniería</title>
+  <link rel="icon" type="image/png" href="img/logoA.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS (missing in original file) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-accent-color: #00a786;
+      --dark-blue: #0d2c4b;
+      --light-gray: #f8f9fa;
+      --text-color: #343a40;
+      --white-color: #ffffff;
+      --border-radius: 12px;
+      --client-logo-max-width: 140px;
+      --client-logo-max-height: 72px;
+      --accent-sunrise: #ffb703;
+      --accent-coral: #ff6b6b;
+      --accent-violet: #6c63ff;
+      --accent-cyan: #4cc9f0;
+      --accent-lime: #7bd88f;
+    }
+
+    /* Base */
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--white-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+    h1,
+    h2,
+    h3 {
+      color: var(--dark-blue);
+      font-weight: 700;
+    }
+    h2 {
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      margin-bottom: 60px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-accent-color);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    section {
+      padding: 100px 0;
+      overflow-x: hidden;
+    }
+
+    /* Header / Nav */
+    .header {
+      background: transparent;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+    .header.scrolled {
+      padding: 10px 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 85px;
+      transition: height 0.3s ease-in-out;
+    }
+    .main-nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .main-nav ul li {
+      display: inline-block;
+      margin-left: 35px;
+    }
+    .main-nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: 700;
+      padding-bottom: 5px;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .header:not(.scrolled) .main-nav ul li a {
+      color: var(--white-color);
+    }
+    .main-nav ul li a:hover,
+    .main-nav ul li a.active {
+      color: var(--secondary-accent-color);
+    }
+    .main-nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--secondary-accent-color);
+      transition: width 0.3s ease-in-out;
+    }
+    .main-nav ul li a:hover::after,
+    .main-nav ul li a.active::after {
+      width: 100%;
+    }
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger-menu .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--dark-blue);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(
+          135deg,
+          rgba(13, 44, 75, 0.82),
+          rgba(108, 99, 255, 0.55),
+          rgba(0, 167, 134, 0.65)
+        ),
+        url("img/quality5.jpeg") no-repeat center center / cover;
+      height: 70vh;
+      color: var(--white-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .inner-hero {
+      height: 70vh;
+      min-height: 420px;
+    }
+    .hero-content {
+      max-width: 850px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      margin-bottom: 20px;
+      color: var(--white-color);
+      font-weight: 900;
+    }
+    .hero p {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    /* Buttons (moved outside media query) */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        var(--secondary-accent-color),
+        var(--accent-cyan)
+      );
+      color: var(--white-color);
+      box-shadow: 0 12px 25px rgba(0, 167, 134, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(0, 167, 134, 0.35);
+    }
+    .btn-outline {
+      border: 2px solid var(--secondary-accent-color);
+      color: var(--secondary-accent-color);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: var(--secondary-accent-color);
+      color: var(--white-color);
+    }
+
+    /* Vacancies */
+    .vacancies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+    .vacancy-card {
+      position: relative;
+      background: var(--white-color);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      border: 1px solid rgba(13, 44, 75, 0.08);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+    .vacancy-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(76, 201, 240, 0.12),
+        rgba(123, 216, 143, 0.12)
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .vacancy-card:hover::before {
+      opacity: 1;
+    }
+    .vacancy-card h3 {
+      margin: 10px 0;
+    }
+    .vacancy-card p {
+      color: #4f5d75;
+    }
+    .vacancy-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: rgba(255, 183, 3, 0.18);
+      color: var(--accent-sunrise);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .vacancy-meta {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      color: #4f5d75;
+      font-size: 0.95rem;
+    }
+    .vacancy-meta li::before {
+      content: "•";
+      color: var(--secondary-accent-color);
+      font-weight: 900;
+      display: inline-block;
+      width: 1em;
+    }
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .skills-chips span {
+      background: rgba(108, 99, 255, 0.12);
+      color: var(--accent-violet);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Map */
+    .map-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+    .map-card {
+      background: var(--white-color);
+      border-radius: var(--border-radius);
+      padding: 24px;
+      border: 1px solid rgba(13, 44, 75, 0.08);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    }
+    #vacantes-map {
+      height: 420px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    .map-card h3 {
+      margin: 0 0 12px 0;
+    }
+    .map-card p {
+      color: #4f5d75;
+    }
+    .map-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 167, 134, 0.08);
+      border-radius: var(--border-radius);
+      padding: 12px 16px;
+    }
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    .legend-color.qro {
+      background: var(--secondary-accent-color);
+    }
+    .legend-color.marques {
+      background: var(--accent-coral);
+    }
+
+    /* Utilities */
+    .section-intro {
+      max-width: 720px;
+      margin: 0 auto 40px;
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--text-color);
+    }
+    .section-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* Footer (single definition) */
+    .footer {
+      background: var(--dark-blue);
+      color: var(--white-color);
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 80px;
+    }
+    .footer p {
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    /* Animations (single definition) */
+    .fade-in-element {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in-element.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero {
+        height: auto;
+        padding: 160px 0 120px;
+      }
+    }
+    @media (max-width: 768px) {
+      .header .container {
+        padding: 0 20px;
+      }
+      .hamburger-menu {
+        display: flex;
+      }
+      .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 260px;
+        background-color: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding-top: 120px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -4px 0 18px rgba(0, 0, 0, 0.08);
+      }
+      .main-nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+      }
+      .main-nav ul li {
+        margin-left: 0;
+      }
+      .main-nav.mobile-active {
+        right: 0;
+      }
+
+      /* Additional small-screen fixes */
+      .header:not(.scrolled) .logo,
+      .header:not(.scrolled) .main-nav ul li a {
+        color: var(--dark-blue);
+      }
+      .header:not(.scrolled) .hamburger-menu .bar {
+        background-color: var(--dark-blue);
+      }
+      .hamburger-menu.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-menu.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+
+    /* Misc */
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="header">
+    <div class="container">
+      <a href="index.html#inicio" class="logo"
+        ><img src="img/logoA.png" alt="Logo de Alessa"
+      /></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+          <li><a href="porque-nosotros.html" class="nav-link">Por Qué Nosotros</a></li>
+          <li><a href="vacantes.html" class="nav-link active">Vacantes</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </header>
 
-    <header class="header">
-        <div class="container">
-            <a href="index.html#inicio" class="logo"><img src="img/logoA.png" alt="Logo de Alessa"></a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                    <li><a href="porque-nosotros.html" class="nav-link">Por Qué Nosotros</a></li>
-                    <li><a href="vacantes.html" class="nav-link active">Vacantes</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+  <section class="hero inner-hero" id="inicio">
+    <div class="hero-content fade-in-element">
+      <h1>Únete a un equipo que impulsa la calidad</h1>
+      <p>
+        Buscamos talento comprometido para operaciones en los municipios de
+        Querétaro y El Marqués. Desarrolla tu carrera con formación continua,
+        turnos flexibles y oportunidades de crecimiento.
+      </p>
+      <a href="#vacantes" class="btn btn-primary">Explorar vacantes disponibles</a>
+    </div>
+  </section>
+
+  <main>
+    <section class="page-section light-bg" id="vacantes">
+      <div class="container">
+        <h2 class="fade-in-element">Vacantes destacadas</h2>
+        <p class="section-intro fade-in-element" style="transition-delay: 0.1s">
+          Creamos equipos multidisciplinarios para mantener la continuidad
+          operativa de nuestros clientes. Revisa algunas de las posiciones que
+          actualmente estamos fortaleciendo.
+        </p>
+
+        <div class="vacancies-grid">
+          <article class="vacancy-card fade-in-element">
+            <span class="vacancy-badge">Operativo</span>
+            <h3>Inspector de Calidad — 📍 Parque Querétaro</h3>
+            <p>
+              Inspección, traspaleo, etiquetado y llenado de reportes dentro de
+              las mejores empresas en el Parque Querétaro.
+            </p>
+            <ul class="vacancy-meta">
+              <li>Turnos de 12 horas (primero y segundo).</li>
+              <li>Contrato inicial de 6 meses con opción a planta.</li>
+              <li>Bonos por asistencia, permanencia y apoyo de despensa mensual.</li>
+            </ul>
+            <div class="skills-chips">
+              <span>Uso de calibradores</span>
+              <span>Reportes digitales</span>
+              <span>5S</span>
             </div>
-        </div>
-    </header>
+          </article>
 
-    <section class="hero inner-hero" id="inicio">
-        <div class="hero-content fade-in-element">
-            <h1>Únete a un equipo que impulsa la calidad</h1>
-            <p>Buscamos talento comprometido para operaciones en los municipios de Querétaro y El Marqués.
-               Desarrolla tu carrera con formación continua, turnos flexibles y oportunidades de crecimiento.</p>
-            <a href="#vacantes" class="btn btn-primary">Explorar vacantes disponibles</a>
+          <article class="vacancy-card fade-in-element">
+            <span class="vacancy-badge">Operativo</span>
+            <h3>Ayudante General — 📍 El Marqués</h3>
+            <p>
+              Inspección, traspaleo, etiquetado y llenado de reportes dentro de
+              las mejores empresas en El Marqués.
+            </p>
+            <ul class="vacancy-meta">
+              <li>Turnos de 12 horas (primero y segundo).</li>
+              <li>Contrato inicial de 6 meses con opción a planta.</li>
+              <li>Bonos por asistencia, permanencia y apoyo de despensa mensual.</li>
+            </ul>
+            <div class="skills-chips">
+              <span>Uso de calibradores</span>
+              <span>Reportes digitales</span>
+              <span>5S</span>
+            </div>
+          </article>
         </div>
+      </div>
     </section>
 
-    <main>
-        <section class="page-section light-bg" id="vacantes">
-            <div class="container">
-                <h2 class="fade-in-element">Vacantes destacadas</h2>
-                <p class="section-intro fade-in-element" style="transition-delay: 0.1s;">Creamos equipos multidisciplinarios para mantener la continuidad operativa de nuestros clientes. Revisa algunas de las posiciones que actualmente estamos fortaleciendo.</p>
-                <div class="vacancies-grid">
-                    <article class="vacancy-card fade-in-element">
-                        <span class="vacancy-badge">Operativo</span>
-                        <h3>Inspector de Calidad-📍Parque Querétaro</h3>
-                        <p>Inspección, Traspaleo, etiquetado y llenado de reportes dentro de las mejores empresas en el parque Querétaro.</p>
-                        <ul class="vacancy-meta">
-                            <li>Turnos de 12 horas primero y segundo</li>
-                            <li>Contrato inicial de 6 meses con opción a planta</li>
-                            <li>Bonos por asistencia, permanencia y apoyo de despensa mensual.</li>
-                        </ul>
-                        <div class="skills-chips">
-                            <span>Uso de calibradores</span>
-                            <span>Reportes digitales</span>
-                            <span>5S</span>
-                        </div>
-                    </article>
-                    <article class="vacancy-card fade-in-element">
-                        <span class="vacancy-badge">Operativo</span>
-                        <h3>Ayudante General-📍El Marqués</h3>
-                        <p>Inspección, Traspaleo, etiquetado y llenado de reportes dentro de las mejores empresas en el Marqués.</p>
-                        <ul class="vacancy-meta">
-                            <li>Turnos de 12 horas primero y segundo</li>
-                            <li>Contrato inicial de 6 meses con opción a planta</li>
-                            <li>Bonos por asistencia, permanencia y apoyo de despensa mensual.</li>
-                        </ul>
-                        <div class="skills-chips">
-                            <span>Uso de calibradores</span>
-                            <span>Reportes digitales</span>
-                            <span>5S</span>
-                        </div>
-                    </article>
-                    
-               
-                  
-              
+    <section class="page-section" id="mapa">
+      <div class="container">
+        <div class="map-wrapper">
+          <div class="map-card fade-in-element">
+            <h3>Cobertura en Querétaro y El Marqués</h3>
+            <p>
+              Centralizamos nuestras operaciones en las zonas industriales más
+              dinámicas del estado. El mapa interactivo te permite identificar
+              las vacantes abiertas y los parques donde desplegamos cuadrillas.
+            </p>
+            <div class="map-legend">
+              <div class="legend-item">
+                <span class="legend-color qro"></span>
+                <div>
+                  <strong>Querétaro</strong>
                 </div>
-            </div>
-        </section>
-
-        <section class="page-section" id="mapa">
-            <div class="container">
-                <div class="map-wrapper">
-                    <div class="map-card fade-in-element">
-                        <h3>Cobertura en Querétaro y El Marqués</h3>
-                        <p>Centralizamos nuestras operaciones en las zonas industriales más dinámicas del estado. El mapa interactivo te permite identificar las vacantes abiertas y los parques donde desplegamos cuadrillas.</p>
-                        <div class="map-legend">
-                            <div class="legend-item">
-                                <span class="legend-color qro"></span>
-                                <div>
-                                    <strong>Querétaro</strong>
-                                    
-                                </div>
-                            </div>
-                            <div class="legend-item" style="background: rgba(255, 107, 107, 0.1);">
-                                <span class="legend-color marques"></span>
-                                <div>
-                                    <strong>El Marqués</strong>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="map-card fade-in-element" style="padding: 0;">
-                        <div id="vacantes-map"><iframe src="https://www.google.com/maps/d/embed?mid=1up0uioIwcf9QbIB0JznC-RzZHq-4CbM&hl=es-419&ehbc=2E312F" width="510" height="425"></iframe></div>
-                    </div>
+              </div>
+              <div class="legend-item" style="background: rgba(255, 107, 107, 0.1)">
+                <span class="legend-color marques"></span>
+                <div>
+                  <strong>El Marqués</strong>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <section class="page-section light-bg" id="proceso">
-        
-                <div class="section-intro" style="margin-top: 60px;">
-                    <a href="mailto:captura@alessa-quality.com" class="btn btn-outline">Enviar CV</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Alessa Servicios Integrales e Ingeniería. Todos los derechos reservados.</p>
+          <!-- Replaced iframe with a Leaflet map to avoid ID conflicts -->
+          <div class="map-card fade-in-element" style="padding: 0">
+            <div id="vacantes-map"></div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-o9N1j7kPocbzcZRkJQNP7YQDdyCjTiMQuILzmiSnJeM=" crossorigin=""></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const header = document.querySelector('.header');
-            const hamburger = document.querySelector('.hamburger-menu');
-            const navMenu = document.querySelector('.main-nav');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const anchorLinks = Array.from(navLinks).filter(link => link.getAttribute('href').startsWith('#'));
-            const trackedSections = anchorLinks
-                .map(link => document.querySelector(link.getAttribute('href')))
-                .filter(section => section !== null);
+    <section class="page-section light-bg" id="proceso">
+      <div class="container">
+        <div class="section-intro" style="margin-top: 60px">
+          <a href="mailto:captura@alessa-quality.com" class="btn btn-outline">Enviar CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            const scrollToSection = (targetId) => {
-                const section = document.getElementById(targetId);
-                if (!section) return;
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Alessa Servicios Integrales e Ingeniería. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
-                const headerHeight = header.offsetHeight;
-                const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j7kPocbzcZRkJQNP7YQDdyCjTiMQuILzmiSnJeM="
+    crossorigin=""
+  ></script>
 
-                window.scrollTo({
-                    top: sectionPosition,
-                    behavior: 'smooth'
-                });
-            };
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.querySelector(".header");
+      const hamburger = document.querySelector(".hamburger-menu");
+      const navMenu = document.querySelector(".main-nav");
+      const navLinks = document.querySelectorAll(".nav-link");
 
-            window.addEventListener('scroll', () => {
-                const scrollPosition = window.pageYOffset;
-                if (scrollPosition > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+      const scrollToSection = (targetId) => {
+        const section = document.getElementById(targetId);
+        if (!section) return;
+        const headerHeight = header.offsetHeight;
+        const sectionPosition =
+          section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: sectionPosition, behavior: "smooth" });
+      };
 
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('mobile-active');
-            });
-            navLinks.forEach(link => link.addEventListener('click', (event) => {
-                const href = link.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    event.preventDefault();
-                    const targetId = href.substring(1);
-                    scrollToSection(targetId);
-                }
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.pageYOffset;
+        if (scrollPosition > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
 
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('mobile-active');
-            }));
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("mobile-active");
+      });
 
-            const fadeInElements = document.querySelectorAll('.fade-in-element');
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    } else {
-                        entry.target.classList.remove('is-visible');
-                    }
-                });
-            }, observerOptions);
-            fadeInElements.forEach(el => observer.observe(el));
+      navLinks.forEach((link) =>
+        link.addEventListener("click", (event) => {
+          const href = link.getAttribute("href");
+          if (href && href.startsWith("#")) {
+            event.preventDefault();
+            const targetId = href.substring(1);
+            scrollToSection(targetId);
+          }
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("mobile-active");
+        })
+      );
 
-            if (trackedSections.length) {
-                const updateActiveLink = () => {
-                    let current = trackedSections[0].getAttribute('id');
-                    const headerHeight = header.offsetHeight;
-                    trackedSections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        if (window.pageYOffset >= sectionTop - headerHeight - 10) {
-                            current = section.getAttribute('id');
-                        }
-                    });
-                    anchorLinks.forEach(link => {
-                        const targetId = link.getAttribute('href').substring(1);
-                        if (targetId === current) {
-                            link.classList.add('active');
-                        } else {
-                            link.classList.remove('active');
-                        }
-                    });
-                };
-                window.addEventListener('scroll', updateActiveLink);
-                updateActiveLink();
-            }
-
-            if (window.location.hash) {
-                const initialTarget = window.location.hash.substring(1);
-                setTimeout(() => scrollToSection(initialTarget), 150);
-            }
-
-            const map = L.map('vacantes-map', {
-                scrollWheelZoom: false,
-                tap: false
-            });
-            const locations = [
-                {
-                    name: 'Querétaro',
-                    coords: [20.588793, -100.389888],
-                    description: 'Vacantes operativas en armadoras y centros logísticos.'
-                },
-                {
-                    name: 'El Marqués',
-                    coords: [20.610467, -100.238857],
-                    description: 'Supervisión y retrabajos en parques industriales clave.'
-                }
-            ];
-
-            const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contribuyentes'
-            });
-            tiles.addTo(map);
-
-            const markers = locations.map(location => {
-                return L.marker(location.coords).addTo(map).bindPopup(`<strong>${location.name}</strong><br>${location.description}`);
-            });
-
-            const bounds = L.latLngBounds(locations.map(location => location.coords));
-            map.fitBounds(bounds, { padding: [30, 30] });
+      const fadeInElements = document.querySelectorAll(".fade-in-element");
+      const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
         });
-    </script>
+      }, observerOptions);
+      fadeInElements.forEach((el) => observer.observe(el));
+
+      // Optional hash scroll
+      if (window.location.hash) {
+        const initialTarget = window.location.hash.substring(1);
+        setTimeout(() => scrollToSection(initialTarget), 150);
+      }
+
+      /* Leaflet map setup */
+      const mapEl = document.getElementById("vacantes-map");
+      if (mapEl) {
+        const map = L.map("vacantes-map", { scrollWheelZoom: false, tap: false });
+        const locations = [
+          {
+            name: "Querétaro",
+            coords: [20.588793, -100.389888],
+            description: "Vacantes operativas en armadoras y centros logísticos.",
+          },
+          {
+            name: "El Marqués",
+            coords: [20.610467, -100.238857],
+            description: "Supervisión y retrabajos en parques industriales clave.",
+          },
+        ];
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contribuyentes',
+        }).addTo(map);
+
+        locations.forEach((loc) => {
+          L.marker(loc.coords).addTo(map).bindPopup(
+            `<strong>${loc.name}</strong><br/>${loc.description}`
+          );
+        });
+
+        const bounds = L.latLngBounds(locations.map((l) => l.coords));
+        map.fitBounds(bounds, { padding: [30, 30] });
+      }
+    });
+  </script>
 </body>
 </html>
